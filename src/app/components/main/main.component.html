@@ -1,0 +1,85 @@
+<div class="main">
+  <div class="container shadow">
+    <br />
+    <div class="row">
+      <div class="col-md-3">
+        <br />
+        <h4>ADD STUDENT</h4>
+        <form (submit)="addStudent($event)">
+          <div class="form-group">
+            <label for="studName">Name</label>
+            <input type="text" class="form-control" id="studName" placeholder="Enter name" required />
+          </div>
+          <div class="form-group">
+            <label for="studAddress">Address</label>
+            <input type="text" class="form-control" id="studAddress" placeholder="Enter address" required />
+          </div>
+          <div class="form-group">
+            <label for="studContactNo">ContactNo</label>
+            <input type="text" class="form-control" id="studContactNo" placeholder="Enter contact number" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br />
+      </div>
+      <div class="col-md-6">
+        <br />
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr class="text-primary">
+                <th scope="col">No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of students">
+                <th class=" align-middle" scope="row">
+                  {{ student?.stud_recno }}
+                </th>
+                <td class=" align-middle">{{ student?.stud_name }}</td>
+                <td class=" align-middle">{{ student?.stud_address }}</td>
+                <td class=" align-middle">{{ student?.stud_number }}</td>
+                <td class=" align-middle">
+                  <button class="btn btn-sm btn-warning btn-block m-1" (click)="updateForm(student)">
+                    Update</button>
+
+                  <button class="btn btn-sm btn-danger btn-block m-1" (click)="deleteStudent(student?.stud_recno)">
+                    Del
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <br />
+        <h4>UPDATE STUDENT</h4>
+        <form (submit)="updateStudent($event)">
+          <input type="hidden" name="studInfo.studRecno1">
+          <div class="form-group">
+            <label for="studName">Name</label>
+            <input type="text" class="form-control" name="studName" placeholder="Enter name" required
+              [(ngModel)]="studInfo.studName1" />
+          </div>
+          <div class="form-group">
+            <label for="studAddress">Address</label>
+            <input type="text" class="form-control" name="studAddress" placeholder="Enter address" required
+              [(ngModel)]="studInfo.studAddress1" />
+          </div>
+          <div class="form-group">
+            <label for="studContactNo">ContactNo</label>
+            <input type="text" class="form-control" name="studContactNo" placeholder="Enter contact number" required
+              [(ngModel)]="studInfo.studContactNo1" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
